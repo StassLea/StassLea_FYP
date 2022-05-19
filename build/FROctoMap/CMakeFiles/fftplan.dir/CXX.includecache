@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/stass/StassLea_FYP/src/FROctoMap/src/CFFTPlan.cpp
+CFFTPlan.h
+/home/stass/StassLea_FYP/src/FROctoMap/src/CFFTPlan.h
+
+/home/stass/StassLea_FYP/src/FROctoMap/src/CFFTPlan.h
+complex
+-
+fftw3.h
+-
+stdlib.h
+-
+

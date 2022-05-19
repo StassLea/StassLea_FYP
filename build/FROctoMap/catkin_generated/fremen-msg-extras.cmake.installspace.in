@@ -1,0 +1,2 @@
+set(fremen_MESSAGE_FILES "msg/froctomapAction.msg;msg/froctomapActionGoal.msg;msg/froctomapActionResult.msg;msg/froctomapActionFeedback.msg;msg/froctomapGoal.msg;msg/froctomapResult.msg;msg/froctomapFeedback.msg;msg/informationAction.msg;msg/informationActionGoal.msg;msg/informationActionResult.msg;msg/informationActionFeedback.msg;msg/informationGoal.msg;msg/informationResult.msg;msg/informationFeedback.msg")
+set(fremen_SERVICE_FILES "srv/RecoverOctomap.srv;srv/RetrieveOctomap.srv;srv/EstimateOctomap.srv;srv/SaveGrid.srv;srv/UpdateGrid.srv;srv/EvaluateGrid.srv")

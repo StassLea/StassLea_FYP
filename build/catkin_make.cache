@@ -1,0 +1,2 @@
+FROctoMap:fyp_nav_rvis:fyp_simulation:rrt_exploration:rrt_exploration_tutorials:turtlebot/turtlebot:turtlebot/turtlebot_bringup:turtlebot/turtlebot_capabilities:turtlebot/turtlebot_description:turtlebot/turtlebot_teleop:turtlebot3/turtlebot3:turtlebot3/turtlebot3_bringup:turtlebot3/turtlebot3_description:turtlebot3/turtlebot3_example:turtlebot3/turtlebot3_gazebo:turtlebot3/turtlebot3_navigation:turtlebot3/turtlebot3_slam:turtlebot3/turtlebot3_teleop
+-DCATKIN_DEVEL_PREFIX=/home/stass/StassLea_FYP/devel -DCMAKE_INSTALL_PREFIX=/home/stass/StassLea_FYP/install -G Unix Makefiles

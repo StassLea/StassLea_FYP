@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -Ofast -march=native -mno-avx -ggdb   -shared -Wl,-soname,libfftplan.so -o /home/stass/StassLea_FYP/devel/lib/libfftplan.so CMakeFiles/fftplan.dir/src/CFFTPlan.cpp.o 

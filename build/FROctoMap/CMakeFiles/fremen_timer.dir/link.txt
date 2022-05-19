@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -Ofast -march=native -mno-avx -ggdb   -shared -Wl,-soname,libfremen_timer.so -o /home/stass/StassLea_FYP/devel/lib/libfremen_timer.so CMakeFiles/fremen_timer.dir/src/CTimer.cpp.o 
