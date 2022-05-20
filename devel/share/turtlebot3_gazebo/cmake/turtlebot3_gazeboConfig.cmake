@@ -67,7 +67,7 @@ set(turtlebot3_gazebo_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(turtlebot3_gazebo_SOURCE_PREFIX /home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo)
+  set(turtlebot3_gazebo_SOURCE_PREFIX /home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_gazebo)
   set(turtlebot3_gazebo_DEVEL_PREFIX /home/stass/StassLea_FYP/devel)
   set(turtlebot3_gazebo_INSTALL_PREFIX "")
   set(turtlebot3_gazebo_PREFIX ${turtlebot3_gazebo_DEVEL_PREFIX})
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(turtlebot3_gazebo_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo/include " STREQUAL " ")
+if(NOT "/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_gazebo/include;/usr/include;/usr/include/gazebo-7;/usr/include/sdformat-4.0;/usr/include/ignition/math2;/usr/include/OGRE;/usr/include/OGRE/Terrain;/usr/include/OGRE/Paging " STREQUAL " ")
   set(turtlebot3_gazebo_INCLUDE_DIRS "")
-  set(_include_dirs "/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo/include")
+  set(_include_dirs "/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_gazebo/include;/usr/include;/usr/include/gazebo-7;/usr/include/sdformat-4.0;/usr/include/ignition/math2;/usr/include/OGRE;/usr/include/OGRE/Terrain;/usr/include/OGRE/Paging")
   if(NOT "https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/turtlebot3_gazebo " STREQUAL " ")
@@ -110,13 +110,13 @@ if(NOT "/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo/include " STRE
         message(FATAL_ERROR "Project 'turtlebot3_gazebo' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'turtlebot3_gazebo' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'turtlebot3_gazebo' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_gazebo/${idir}'.  ${_report}")
     endif()
     _list_append_unique(turtlebot3_gazebo_INCLUDE_DIRS ${include})
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "/usr/lib/x86_64-linux-gnu/libgazebo.so;/usr/lib/x86_64-linux-gnu/libgazebo_client.so;/usr/lib/x86_64-linux-gnu/libgazebo_gui.so;/usr/lib/x86_64-linux-gnu/libgazebo_sensors.so;/usr/lib/x86_64-linux-gnu/libgazebo_rendering.so;/usr/lib/x86_64-linux-gnu/libgazebo_physics.so;/usr/lib/x86_64-linux-gnu/libgazebo_ode.so;/usr/lib/x86_64-linux-gnu/libgazebo_transport.so;/usr/lib/x86_64-linux-gnu/libgazebo_msgs.so;/usr/lib/x86_64-linux-gnu/libgazebo_util.so;/usr/lib/x86_64-linux-gnu/libgazebo_common.so;/usr/lib/x86_64-linux-gnu/libgazebo_gimpact.so;/usr/lib/x86_64-linux-gnu/libgazebo_opcode.so;/usr/lib/x86_64-linux-gnu/libgazebo_opende_ou.so;/usr/lib/x86_64-linux-gnu/libgazebo_math.so;/usr/lib/x86_64-linux-gnu/libgazebo_ccd.so;/usr/lib/x86_64-linux-gnu/libboost_signals.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;optimized;/usr/lib/x86_64-linux-gnu/libprotobuf.so;debug;/usr/lib/x86_64-linux-gnu/libprotobuf.so;-lpthread;/usr/lib/x86_64-linux-gnu/libsdformat.so;optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so;/usr/lib/x86_64-linux-gnu/libboost_thread.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;/usr/lib/x86_64-linux-gnu/libpthread.so;optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;/usr/lib/x86_64-linux-gnu/libignition-math2.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/stass/StassLea_FYP/devel/lib;/home/stass/FROC_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/stass/StassLea_FYP/devel/lib;/home/stass/StassLea_FYP/devel/lib;/home/stass/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

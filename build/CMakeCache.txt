@@ -749,6 +749,12 @@ joy_DIR:PATH=/opt/ros/kinetic/share/joy/cmake
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
 
+//Value Computed by CMake
+localization_data_pub_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/rvizPub/localization_data_pub
+
+//Value Computed by CMake
+localization_data_pub_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/rvizPub/localization_data_pub
+
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/kinetic/share/message_filters/cmake
 
@@ -903,19 +909,37 @@ turtlebot3_example_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3/t
 turtlebot3_example_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_example
 
 //Value Computed by CMake
-turtlebot3_gazebo_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3/turtlebot3_gazebo
+turtlebot3_fake_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3_simulations/turtlebot3_fake
 
 //Value Computed by CMake
-turtlebot3_gazebo_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_gazebo
+turtlebot3_fake_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_fake
+
+//Value Computed by CMake
+turtlebot3_gazebo_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3_simulations/turtlebot3_gazebo
+
+//Value Computed by CMake
+turtlebot3_gazebo_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_gazebo
+
+//Value Computed by CMake
+turtlebot3_msgs_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3_msgs
 
 //The directory containing a CMake configuration file for turtlebot3_msgs.
-turtlebot3_msgs_DIR:PATH=/opt/ros/kinetic/share/turtlebot3_msgs/cmake
+turtlebot3_msgs_DIR:PATH=/home/stass/StassLea_FYP/devel/share/turtlebot3_msgs/cmake
+
+//Value Computed by CMake
+turtlebot3_msgs_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3_msgs
 
 //Value Computed by CMake
 turtlebot3_navigation_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3/turtlebot3_navigation
 
 //Value Computed by CMake
 turtlebot3_navigation_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3/turtlebot3_navigation
+
+//Value Computed by CMake
+turtlebot3_simulations_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3_simulations/turtlebot3_simulations
+
+//Value Computed by CMake
+turtlebot3_simulations_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot3_simulations/turtlebot3_simulations
 
 //Value Computed by CMake
 turtlebot3_slam_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot3/turtlebot3_slam
@@ -1121,7 +1145,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=21
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=25
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

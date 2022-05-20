@@ -5,7 +5,8 @@
         <arg name="gui" default="true" />
         <arg name="pause" default="false" />
 	<arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-	<arg name="world_type" default="FYP" />
+	<arg name="world_type" default="1" />
+	<arg name="map_type" default="1" />
         <arg name="world" default="$(find fyp_simulation)/worlds/$(arg world_type)_world.world" />
 	<arg name="robot_name" value="robot_1" />
 
@@ -24,20 +25,25 @@
 	<arg name="robot_name" value="$(arg robot_name)"/>
 	<arg name="init_pose" value="-x -7.0 -y -3.0 -z 0.0"/>
 	<arg name="model" value="$(arg model)"/>
+	</include> 
+
+	<!-- 2D mapping and move base -->
+
+	<include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+		<arg name="map_file" value="$(find fyp_simulation)/map/$(arg map_type)_map.yaml"/>
 	</include>
 
-
-	<!--launch rviz-->
+	<!--launch rviz  
 
   	<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
     		<arg name="model" value="$(arg model)" />
-  	</include>
+  	</include> -->
 
 	<!-- octomap -->
 
- 	<include file="$(find fremen)/launch/octomap.launch"/>
+ 	<!--<include file="$(find fremen)/launch/octomap.launch"/>
 
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find fyp_nav_rvis)/rviz/FYP_rvis.rviz" >
-	</node>
+	</node>-->
 
 </launch>

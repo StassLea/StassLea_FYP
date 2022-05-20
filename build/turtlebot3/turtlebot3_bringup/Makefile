@@ -67,38 +67,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -121,17 +100,38 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,21 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
-
-# Convenience name for target.
-turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
-
-.PHONY : turtlebot3_diagnostics
-
-# fast build rule for target.
-turtlebot3_diagnostics/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build
-.PHONY : turtlebot3_diagnostics/fast
-
-# Convenience name for target.
 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule
@@ -211,6 +196,36 @@ diagnostic_msgs_generate_messages_eus/fast:
 .PHONY : diagnostic_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
+turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule:
+	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+diagnostic_msgs_generate_messages_cpp: turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : diagnostic_msgs_generate_messages_cpp
+
+# fast build rule for target.
+diagnostic_msgs_generate_messages_cpp/fast:
+	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
+.PHONY : diagnostic_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule:
+	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
+.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
+
+# Convenience name for target.
+turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/rule
+
+.PHONY : turtlebot3_diagnostics
+
+# fast build rule for target.
+turtlebot3_diagnostics/fast:
+	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build
+.PHONY : turtlebot3_diagnostics/fast
+
+# Convenience name for target.
 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule:
 	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule
@@ -239,96 +254,6 @@ diagnostic_msgs_generate_messages_lisp: turtlebot3/turtlebot3_bringup/CMakeFiles
 diagnostic_msgs_generate_messages_lisp/fast:
 	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
 .PHONY : diagnostic_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-turtlebot3_msgs_generate_messages_py: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/rule
-
-.PHONY : turtlebot3_msgs_generate_messages_py
-
-# fast build rule for target.
-turtlebot3_msgs_generate_messages_py/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_py.dir/build
-.PHONY : turtlebot3_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-turtlebot3_msgs_generate_messages_cpp: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : turtlebot3_msgs_generate_messages_cpp
-
-# fast build rule for target.
-turtlebot3_msgs_generate_messages_cpp/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_cpp.dir/build
-.PHONY : turtlebot3_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-diagnostic_msgs_generate_messages_cpp: turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : diagnostic_msgs_generate_messages_cpp
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_cpp/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-turtlebot3_msgs_generate_messages_eus: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/rule
-
-.PHONY : turtlebot3_msgs_generate_messages_eus
-
-# fast build rule for target.
-turtlebot3_msgs_generate_messages_eus/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_eus.dir/build
-.PHONY : turtlebot3_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-turtlebot3_msgs_generate_messages_lisp: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : turtlebot3_msgs_generate_messages_lisp
-
-# fast build rule for target.
-turtlebot3_msgs_generate_messages_lisp/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_lisp.dir/build
-.PHONY : turtlebot3_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/rule
-.PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-turtlebot3_msgs_generate_messages_nodejs: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : turtlebot3_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-turtlebot3_msgs_generate_messages_nodejs/fast:
-	cd /home/stass/StassLea_FYP/build && $(MAKE) -f turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/build.make turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_msgs_generate_messages_nodejs.dir/build
-.PHONY : turtlebot3_msgs_generate_messages_nodejs/fast
 
 src/turtlebot3_diagnostics.o: src/turtlebot3_diagnostics.cpp.o
 
@@ -364,23 +289,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... install/local"
-	@echo "... turtlebot3_diagnostics"
 	@echo "... diagnostic_msgs_generate_messages_nodejs"
 	@echo "... diagnostic_msgs_generate_messages_eus"
-	@echo "... diagnostic_msgs_generate_messages_py"
-	@echo "... list_install_components"
-	@echo "... install/strip"
-	@echo "... diagnostic_msgs_generate_messages_lisp"
-	@echo "... turtlebot3_msgs_generate_messages_py"
-	@echo "... turtlebot3_msgs_generate_messages_cpp"
 	@echo "... install"
 	@echo "... diagnostic_msgs_generate_messages_cpp"
-	@echo "... turtlebot3_msgs_generate_messages_eus"
-	@echo "... turtlebot3_msgs_generate_messages_lisp"
-	@echo "... turtlebot3_msgs_generate_messages_nodejs"
+	@echo "... turtlebot3_diagnostics"
+	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... list_install_components"
+	@echo "... diagnostic_msgs_generate_messages_lisp"
+	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... test"
+	@echo "... edit_cache"
 	@echo "... src/turtlebot3_diagnostics.o"
 	@echo "... src/turtlebot3_diagnostics.i"
 	@echo "... src/turtlebot3_diagnostics.s"
