@@ -1,0 +1,8 @@
+prefix=/home/stass/StassLea_FYP/install
+
+Name: turtlebot_exploration_rviz
+Description: Description of turtlebot_exploration_rviz
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

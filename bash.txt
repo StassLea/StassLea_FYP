@@ -1,0 +1,46 @@
+############ initialpose estimate bash
+rostopic pub /initialpose geometry_msgs/PoseWithCovarianceStamped "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: 'map'
+pose:
+  pose:
+    position: {x: -6.99521827698, y: -2.96817207336, z: 0.0}
+    orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+  covariance: [0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.06853891945200942]"
+
+################ nav goal 
+rostopic pub move_base_simple/goal geometry_msgs/PoseStamped "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: 'map'
+pose:
+  position:
+    x: 5.78160142899
+    y: -4.43579244614
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: -0.0180634861299" 
+
+##########despawn robot
+rosservice call gazebo/delete_model '{model_name: robot_1}'
+
+###########despawn house
+rosservice call gazebo/delete_model '{model_name: 1_house}'
+
+#####  if kill all
+[ INFO] [1653032426.592876326, 667.512000000]: Goal reached
+
+[ERROR] [1653032514.097587020, 519.782000000]: Aborting because a valid plan could not be found. Even after executing all recovery behaviors
+
+rosnode kill -a
+

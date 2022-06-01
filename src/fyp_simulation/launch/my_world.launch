@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <launch>
+	<!-- sync teims -->
+	<param name="/use_sim_time" value="true" />
+
         <!-- overwriting these args -->
         <arg name="debug" default="false" />
         <arg name="gui" default="true" />
@@ -16,7 +19,7 @@
                 <arg name="debug" value="$(arg debug)" />
                 <arg name="gui" value="$(arg gui)" />
                 <arg name="paused" value="$(arg pause)" />
-                <arg name="use_sim_time" value="true" />
+                <arg name="use_sim_time" value="true" /> 
         </include>
 
 	<!-- gazebo SPAWN -->
@@ -25,19 +28,35 @@
 	<arg name="robot_name" value="$(arg robot_name)"/>
 	<arg name="init_pose" value="-x -7.0 -y -3.0 -z 0.0"/>
 	<arg name="model" value="$(arg model)"/>
-	</include> 
+	</include>  
+
+	<!-- frontier exploration 
+
+	<include file="$(find turtlebot3_slam)/launch/turtlebot3_frontier_exploration.launch">
+	</include>	-->
 
 	<!-- 2D mapping and move base -->
 
 	<include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
 		<arg name="map_file" value="$(find fyp_simulation)/map/$(arg map_type)_map.yaml"/>
-	</include>
+	</include> 
 
+	<!--   CVA Sequencer Node 
+
+	<node name="CVA_sequencer" pkg="fyp_simulation" type="CVA_sequencer"/>-->
+	
 	<!--launch rviz  
 
   	<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
     		<arg name="model" value="$(arg model)" />
   	</include> -->
+
+	<!--<group if="$(arg foo)">
+		
+		<node pkg="rosservice" type="rosservice" name="robotdespawn" args="call gazebo/delete_model '{model_name: robot_1}'" />	
+		<node pkg="rosservice" type="rosservice" name="modeldespawn" args="call gazebo/delete_model '{model_name: 1_house}'" />
+
+	</group>-->
 
 	<!-- octomap -->
 

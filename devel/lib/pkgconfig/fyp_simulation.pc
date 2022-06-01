@@ -5,4 +5,4 @@ Description: Description of fyp_simulation
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: roscpp std_msgs geometry_msgs move_base_msgs rospy

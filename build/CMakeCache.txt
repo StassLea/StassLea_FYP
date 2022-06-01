@@ -640,6 +640,21 @@ fftplan_LIB_DEPENDS:STATIC=
 //Dependencies for the target
 frelement_LIB_DEPENDS:STATIC=general;fftw3;general;fftplan;general;fremen_timer;
 
+//Dependencies for target
+fremen2DGrid_frelement_LIB_DEPENDS:STATIC=
+
+//Dependencies for the target
+fremen2DGrid_grid_LIB_DEPENDS:STATIC=general;fremen2DGrid_frelement;
+
+//Dependencies for the target
+fremen2DGrid_set_LIB_DEPENDS:STATIC=general;fremen2DGrid_grid;
+
+//Value Computed by CMake
+fremen2dgrid_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/fremen/Fremen2DGrid
+
+//Value Computed by CMake
+fremen2dgrid_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/fremen/Fremen2DGrid
+
 //Value Computed by CMake
 fremen_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/FROctoMap
 
@@ -649,8 +664,38 @@ fremen_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/FROctoMap
 //Dependencies for target
 fremen_timer_LIB_DEPENDS:STATIC=
 
+//Value Computed by CMake
+fremenarray_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/fremen/FremenArray
+
+//Value Computed by CMake
+fremenarray_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/fremen/FremenArray
+
+//Dependencies for target
+fremenarray_frelement_LIB_DEPENDS:STATIC=
+
 //Dependencies for the target
 fremengrid_LIB_DEPENDS:STATIC=general;frelement;
+
+//Value Computed by CMake
+fremenserver_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/fremen/FremenServer
+
+//Value Computed by CMake
+fremenserver_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/fremen/FremenServer
+
+//Dependencies for the target
+fremenserver_frelement_LIB_DEPENDS:STATIC=general;fremenserver_timer;
+
+//Dependencies for the target
+fremenserver_frelementset_LIB_DEPENDS:STATIC=general;fremenserver_frelement;
+
+//Dependencies for target
+fremenserver_timer_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+frenap_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/fremen/frenap
+
+//Value Computed by CMake
+frenap_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/fremen/frenap
 
 //Value Computed by CMake
 fyp_nav_rvis_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/fyp_nav_rvis
@@ -763,6 +808,12 @@ message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
+
+//The directory containing a CMake configuration file for mongodb_store.
+mongodb_store_DIR:PATH=mongodb_store_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for move_base_msgs.
+move_base_msgs_DIR:PATH=/opt/ros/kinetic/share/move_base_msgs/cmake
 
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
@@ -976,6 +1027,18 @@ turtlebot_description_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot
 
 //Value Computed by CMake
 turtlebot_description_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot/turtlebot_description
+
+//Value Computed by CMake
+turtlebot_exploration_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot_exploration
+
+//Value Computed by CMake
+turtlebot_exploration_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot_exploration
+
+//Value Computed by CMake
+turtlebot_exploration_rviz_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot_exploration_rviz
+
+//Value Computed by CMake
+turtlebot_exploration_rviz_SOURCE_DIR:STATIC=/home/stass/StassLea_FYP/src/turtlebot_exploration_rviz
 
 //Value Computed by CMake
 turtlebot_teleop_BINARY_DIR:STATIC=/home/stass/StassLea_FYP/build/turtlebot/turtlebot_teleop
