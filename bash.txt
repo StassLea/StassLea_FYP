@@ -44,3 +44,16 @@ rosservice call gazebo/delete_model '{model_name: 1_house}'
 
 rosnode kill -a
 
+##########doors 1,2 &3 #
+rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 1' -x 4.78 -y -2.05
+rosservice call gazebo/delete_model '{model_name: Hinged door 1}'
+
+rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 2' -x 2.17 -y -0.1
+rosservice call gazebo/delete_model '{model_name: Hinged door 2}'
+
+rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 3' -x 2.17 -y 4.16
+rosservice call gazebo/delete_model '{model_name: Hinged door 3}'
+
+
+
+

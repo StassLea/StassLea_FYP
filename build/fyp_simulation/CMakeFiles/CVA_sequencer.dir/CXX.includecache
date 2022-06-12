@@ -19,7 +19,11 @@ std_msgs/String.h
 -
 actionlib_msgs/GoalStatusArray.h
 -
+iostream
+-
 fstream
+-
+string
 -
 
 /opt/ros/kinetic/include/actionlib_msgs/GoalID.h

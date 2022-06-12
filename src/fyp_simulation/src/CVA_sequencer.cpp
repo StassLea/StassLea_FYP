@@ -5,7 +5,11 @@
 #include <std_msgs/String.h>
 #include <actionlib_msgs/GoalStatusArray.h>
 
+#include <iostream>
 #include <fstream>
+#include <string>
+
+using namespace std;
 
 geometry_msgs::PoseWithCovarianceStamped init_pose;
 geometry_msgs::PoseStamped pose;
@@ -13,7 +17,14 @@ geometry_msgs::PoseStamped pose;
 int goal_select = 0;
 int i = 0;
 int time_count = 0;
-int end_time = 100;
+int end_time = 8;
+int PredSeq[9];
+int doors[9][3];
+int j = 0;
+
+int door1 = 0;
+int door2 = 0;
+int door3 = 0;
 
 ros::Publisher Pose_Goal;
 
@@ -45,7 +56,6 @@ void Goal_Pose(){
         pose.pose.orientation.w = -0.0180634861299;
 
 return;
-
 }
 
 void Home_Pose(){
@@ -61,7 +71,100 @@ void Home_Pose(){
         pose.pose.orientation.w = 1.0;
 
 return;
+}
 
+void Door_1(){
+
+	if ((doors[time_count][0] == 1) & (door1 == 0)){
+		system("rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 1' -x 4.78 -y -2.05");
+		door1 = 1;
+	}else
+	if ((doors[time_count][0] == 0) & (door1 == 1)){
+		system("rosservice call gazebo/delete_model '{model_name: Hinged door 1}'");
+		door1 = 0;
+	}
+	
+	
+return;
+}
+void Door_2(){
+
+	if ((doors[time_count][1] == 1) & (door2 == 0)){
+		system("rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 2' -x 2.17 -y -0.1");
+		door2 = 1;
+	}else
+	if ((doors[time_count][1] == 0) & (door2 == 1)){
+		system("rosservice call gazebo/delete_model '{model_name: Hinged door 2}'");
+		door2 = 0;
+	}
+	
+	
+return;
+}
+void Door_3(){
+
+	if ((doors[time_count][2] == 1) & (door3 == 0)){
+		system("rosrun gazebo_ros spawn_model -file /home/stass/.gazebo/models/hinged_door/model.sdf -gazebo -model 'Hinged door 3' -x 2.17 -y 4.16");
+		door3 = 1;
+	}else
+	if ((doors[time_count][2] == 0) & (door3 == 1)){
+		system("rosservice call gazebo/delete_model '{model_name: Hinged door 3}'");
+		door3 = 0;
+	}
+	
+	
+return;
+}
+
+void Extract_Seq_Data(){
+	
+	string data;
+	// enviroment
+	ifstream env;
+	env.open("Pred_Seq.txt");
+	env >> data;
+	env.close();
+	i = 0;
+	for (i = 0; i<data.length(); i++){
+		PredSeq[i] = PredSeq[i] * 10 + (data[i] - 48);
+	
+	}
+
+	// door
+	string dat;
+	ifstream door;
+	door.open("Door_seq.txt");
+	door >> dat;
+	door.close();
+
+	i = 0;
+	j = 0;
+        //cout << "dat length" << dat;
+	for (i = 0; i<(dat.length()/3); i++){
+		for (j = 0; j<3 ; j++){
+			doors[i][j] = dat[j + i*3] - 48;	
+		}
+	}
+
+	
+return;
+}
+
+void Map_server(){
+	
+	system("rosnode kill /map_server");
+	if (PredSeq[time_count] == 1){
+		system("rosrun map_server map_server src/fyp_simulation/map/1_map.yaml &");
+	}else
+	if (PredSeq[time_count] == 2){
+		system("rosrun map_server map_server src/fyp_simulation/map/2_map.yaml &");
+	}else
+	if (PredSeq[time_count] == 3){
+		system("rosrun map_server map_server src/fyp_simulation/map/3_map.yaml &");
+	}else
+
+	
+return;
 }
 
 void Goal_Publish(geometry_msgs::PoseStamped goal){
@@ -70,8 +173,6 @@ ros::Publisher Pose_Goal = n.advertise<geometry_msgs::PoseStamped>("/move_base_s
 ros::Rate loop(10);
 i=0;
 while(i < 20){
-
-	ROS_INFO("goaklllllll %i",i);
 
 	Pose_Goal.publish(goal);
 
@@ -89,37 +190,34 @@ void status_callback(const move_base_msgs::MoveBaseActionResult &status)
 
 ros::Rate loop_rate(10);
 int stat = status.status.status;
-ROS_INFO("status %i", stat);
-if(stat == 3 || stat == 4){ 
+
 	
-	if (goal_select == 0){
-		Home_Pose();
-		Goal_Publish(pose);
- 		++time_count;
-	}else{
 
-		/**run fuction to kill map server and re run then **/
+	if(stat == 3 || stat == 4){ 
+	
+		if (goal_select == 0){
+			Home_Pose();
+			Goal_Publish(pose);
+			if (time_count > end_time){
+				ros::shutdown();
+			}
+		}else{
 
-		Goal_Pose();
-		Goal_Publish(pose);
-		++time_count;
-	}
-	if(goal_select == 0){
-		goal_select = 1;
-	}else{ goal_select = 0;}
-
-ROS_INFO("aslkdjlaskdj %i",time_count);
-}
-if (time_count == end_time){
-	ros::shutdown();
-}
-
-	/*if(stat == 3){
-		ROS_INFO("3:BOYS WE ARE FUCKING IN");
-	}else{
-		ROS_ERROR("3:we still in but errorish");
-	}*/
-
+			/**run fuction to kill map server and re run then **/
+			ROS_INFO("TIME COUNT: %i",time_count);
+			Door_1();
+			Door_2();
+			Door_3();
+			Map_server();
+			system("rosservice call /move_base/clear_costmaps '{}'");
+			Goal_Pose();
+			Goal_Publish(pose);
+			++time_count;
+		}
+		if(goal_select == 0){
+			goal_select = 1;
+		}else{ goal_select = 0;}
+	}	
 }
 
 
@@ -140,6 +238,11 @@ ros::Publisher Pose_Est = n.advertise<geometry_msgs::PoseWithCovarianceStamped>(
 
 Pose_Estimation();
 
+/**Define end time, EnviroSeq and door1 door2 door3 */
+
+Extract_Seq_Data();
+
+i = 0;
 while(i < 25){
 
 loop_rate.sleep();

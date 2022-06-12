@@ -8,7 +8,7 @@
         <arg name="gui" default="true" />
         <arg name="pause" default="false" />
 	<arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-	<arg name="world_type" default="1" />
+	<arg name="world_type" default="FYP" />
 	<arg name="map_type" default="1" />
         <arg name="world" default="$(find fyp_simulation)/worlds/$(arg world_type)_world.world" />
 	<arg name="robot_name" value="robot_1" />
